@@ -1,0 +1,86 @@
+/*
+
+	1.0 COMPONENTS
+	2.0 SECTIONS
+
+*/
+
+/*  1.0 COMPONENTS  */
+
+.comp-accordion {
+	.accordion-label {
+		position: relative;
+		padding: var(--s-3) 0;
+		font: var(--t-b-2);
+		cursor: pointer;
+		border-top: 1px solid var(--cr-subdued);
+	}
+
+	.accordion-label:after {
+		content: '';
+		display: block;
+		position: absolute;
+		top: var(--s-2);
+		right: calc(0px - (var(--s-4) - var(--s-2)) / 2);
+		width: var(--s-4);
+		height: var(--s-4);
+		background: url(../assets-img/svg-caret-down.svg) center/var(--s-2)
+			no-repeat;
+		transition: 0.2s;
+		pointer-events: none;
+	}
+
+	.accordion-content {
+		position: relative;
+		height: 0;
+		padding: 0 0 1px;
+		overflow: hidden;
+
+		& > * {
+			padding-bottom: var(--s-2);
+		}
+	}
+
+	&:last-child {
+		border-bottom: 1px solid var(--cr-subdued);
+	}
+
+	&.active .accordion-label:after {
+		transform: rotate(-180deg);
+	}
+}
+.image-container {
+	// background-color: green;
+	position: relative;
+	overflow: hidden; // 取消註解手機會被咖掉
+	&::after {
+		content: '';
+		display: block;
+		padding-top: 100%;
+	}
+}
+.comp-image-heading-btn {
+	.text-area {
+		padding: var(--s-section) var(--s-5);
+		position: relative;
+		width: 50%;
+		margin: 0 auto;
+	}
+	.image-area {
+		position: relative;
+		width: 50%;
+		margin: 0 auto;
+	}
+	a {
+		margin: var(--s-2) var(--s-3) var(--s-2) 0;
+	}
+	// @media screen {
+
+	// }
+}
+
+/*  1.0 COMPONENTS - END  */
+
+/*  2.0 SECTIONS  */
+
+/*  2.0 SECTIONS - END  */
