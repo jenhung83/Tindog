@@ -19,7 +19,7 @@
 	$feature = get_field('feature_group');
 	// var_dump($feature);
 	echo '<div class="f-h c-1">';
-	if($feature):
+	if(isset($feature) && !empty($feature)):
 		foreach($feature as $f):
 		$f_icon = $f['feature_fa_icon'];
 		$f_heading = $f["feature_heading"];
@@ -31,18 +31,19 @@
 	?>
 </session>
 <session class="frontpage-testimonial bg-sec f-v cr-white">
-	<div class="main-carousel" data-flickity='{ 
+	<div class="user-carousel" data-flickity='{ 
 		"cellAlign": "center", 
 		"contain": true, 
 		"wrapAround": true,
-		"autoPlay": 3500, 
+		"autoPlay": 5000, 
 		"pauseAutoPlayOnHover": false,
-		"setGallerySize": false }'>
+		"setGallerySize": false,
+		"pageDots": false }'>
 		<?php $testimonial = get_field('testimonial_group');
 		// echo'<pre>';var_dump($testimonial);echo'</pre>';
 		//wrapAround: true
 
-		if($testimonial):
+		if($testimonial != null):
 			foreach($testimonial as $t):
 			$t_comment=$t['comment'];
 			$t_profile=$t['profile'];
@@ -55,7 +56,7 @@
 			<h2><?php echo $t_comment; ?></h2>
 
 			<div class="f-h f-j-c f-a-c">
-				<div class="image-area image-container">
+				<div class="image-container">
 					<span class="">
 						<?php 
 						// echo'<pre>';var_dump($image);;echo'</pre>';
@@ -73,5 +74,51 @@
 
 	</div>
 </session>
+
+<session class="frontpage-press">
+
+  <div class="marquee bg-sec" data-speed="10">
+    <div class="marquee-inner">
+      <?php $press = get_field('press');
+      // var_dump($press);
+      if (isset($press) && !empty($press)):
+        foreach ($press as $p):
+      ?>
+      <div class="marquee-block"> 
+        <?php echo get_responsive_image($p['ID'], 'medium', 300, $p['alt']); ?>     
+      </div>
+      <?php 
+        endforeach;
+      endif;
+      ?>
+    </div>
+
+  </div>
+</session>
+<!-- 
+	上面寫完ㄌㄜ 剩下pricing session and card component
+	WIP 2022 01 14 --><!-- WIP 2022 01 14 --><!-- WIP 2022 01 14 --><!-- WIP 2022 01 14 --><!-- WIP 2022 01 14 --><!-- WIP 2022 01 14 --><!-- WIP 2022 01 14 --><!-- WIP 2022 01 14 -->
+<session class="frontpage-pricing">
+	<h1><?php // 不能這樣寫 還是用isset 不然網頁會壞掉 echo get_field('pricing_title') ? get_field('pricing_title') : '';?></h1>
+  <?php 
+    
+    // include( locate_template( 'inc/components/comp-pricing-card.php', false, false ));?>
+</session>
+<!-- WIP 2022 01 14 --><!-- WIP 2022 01 14 --><!-- WIP 2022 01 14 --><!-- WIP 2022 01 14 --><!-- WIP 2022 01 14 --><!-- WIP 2022 01 14 --><!-- WIP 2022 01 14 --><!-- WIP 2022 01 14
+
+下面寫完了～～
+ -->
+
+
+
+<session class="frontpage-download f-h bg-main">
+  <?php 
+  $heading = get_field('download_heading');
+  $button = get_field('download_options');
+    include( locate_template( 'inc/components/comp-image-heading-btn.php', false, false ));
+  ?>
+</session>
+
+
 
 <?php get_footer();?>

@@ -6,6 +6,40 @@
 */
 
 /*  1.0 COMPONENTS  */
+@keyframes marquee {
+	0% {
+		transform: translate3d(0, 0, 0);
+	}
+	100% {
+		transform: translate3d(-100%, 0, 0);
+	}
+}
+
+.marquee {
+	// assign exact height per instance
+	width: 100%;
+	position: relative;
+	&,
+	.marquee-inner,
+	.marquee-block {
+		flex: none;
+		display: flex;
+		align-items: center;
+		overflow: hidden;
+		white-space: nowrap;
+	}
+
+	.marquee-inner {
+		// height: 100%;
+		// position: absolute;
+
+		.marquee-block {
+			// slight delay leads to better page init performance
+			width: 200px; //!!!!!!!!!!! 一定要設一個寬度給他 不然他會整個重疊在一起
+			animation: marquee 40s 0.5s linear infinite;
+		}
+	}
+}
 
 .comp-accordion {
 	.accordion-label {
@@ -63,13 +97,19 @@
 	.text-area {
 		padding: var(--s-section) var(--s-5);
 		position: relative;
-		width: 50%;
+		width: 100%;
 		margin: 0 auto;
+		flex: 0 0 50%;
+
+		&-full {
+			flex: 0 0 80%;
+		}
 	}
 	.image-area {
 		position: relative;
-		width: 50%;
+		width: 100%;
 		margin: 0 auto;
+		flex: 0 0 50%;
 	}
 	a {
 		margin: var(--s-2) var(--s-3) var(--s-2) 0;

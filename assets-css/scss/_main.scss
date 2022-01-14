@@ -5,6 +5,13 @@
 		1.2 FOOTER
 		1.3 GENERAL + MISC
 	2.0 FRONTPAGE
+		2.1 FRONT PAGE HERO
+		2.2 FRONT PAGE FEATURE
+		2.3 FRONT PAGE TESTIMONIAL
+		2.4 FRONT PAGE PRESS
+		2.5 FRONT PAGE PRICING
+		2.6 FRONT PAGE DOWNLOAD
+
 	3.0 ...這裡有什麼頁面就要列出來
 
 */
@@ -80,7 +87,9 @@
 /*  1.3 GENERAL + MISC - END  */
 
 /*  1.0 SITEWIDE - END  */
+
 /* 2.0 FRONT PAGE */
+/* 2.1 FRONT PAGE HERO */
 .frontpage-hero {
 	position: relative;
 	.image-area {
@@ -98,6 +107,7 @@
 		}
 	}
 }
+/* 2.2 FRONT PAGE FEATURE */
 .frontpage-feature {
 	position: relative;
 	padding: var(--s-6) var(--s-section);
@@ -109,19 +119,21 @@
 		}
 	}
 }
+/* 2.3 FRONT PAGE TESTIMONIAL */
 .frontpage-testimonial {
 	text-align: center;
 	position: relative;
-	padding: var(--s-section);
-	.image-area {
-		height: 150px; //not dynamic
-		padding-right: var(--s-4);
-		img {
-			border-radius: 100%;
-		}
-	}
-	.main-carousel {
+	padding: var(--s-section) var(--s-section) 0;
+	.user-carousel {
 		height: var(--w-3);
+		.image-container {
+			height: 150px; //not dynamic
+			padding-right: var(--s-4);
+			padding-top: 0;
+			img {
+				border-radius: 100%;
+			}
+		}
 	}
 	.carousel-cell {
 		width: 100%;
@@ -131,21 +143,21 @@
 		border-radius: 5px;
 		counter-increment: carousel-cell;
 	}
-	.flickity-page-dots {
-		bottom: 0px;
-	}
-	/* white circles */
-	.flickity-page-dots .dot {
-		width: 12px;
-		height: 12px;
-		opacity: 1;
-		background: transparent;
-		border: 2px solid var(--cr-white-o);
-	}
-	/* fill-in selected dot */
-	.flickity-page-dots .dot.is-selected {
-		background: white;
-	}
+	// .flickity-page-dots {	//pageDots set to true to enable
+	// 	bottom: 0px;
+	// }
+	// /* white circles */
+	// .flickity-page-dots .dot {
+	// 	width: 12px;
+	// 	height: 12px;
+	// 	opacity: 1;
+	// 	background: transparent;
+	// 	border: 2px solid var(--cr-white-o);
+	// }
+	// /* fill-in selected dot */
+	// .flickity-page-dots .dot.is-selected {
+	// 	background: white;
+	// }
 	/* no circle */
 	.flickity-button {
 		background: transparent;
@@ -165,5 +177,25 @@
 	/* hide disabled button */
 	.flickity-button:disabled {
 		display: none;
+	}
+}
+/* 2.4 FRONT PAGE PRESS */
+.frontpage-press {
+	position: relative;
+	.marquee {
+		height: var(--s-6);
+		.marquee-block {
+			margin-right: var(--s-5);
+		}
+	}
+}
+/* 2.5 FRONT PAGE PRICING */
+
+/* 2.6 FRONT PAGE DOWNLOAD */
+.frontpage-download {
+	text-align: center;
+	padding: var(--s-section);
+	.comp-image-heading-btn {
+		justify-content: center;
 	}
 }

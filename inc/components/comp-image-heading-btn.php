@@ -6,7 +6,7 @@
 		<div class="image-area">:
 		render if there's any.
 	-->
-	<div class="text-area type-spacing">
+	<div class="text-area<?php echo (isset($image)&&!empty($image)?'':'-full');?> type-spacing">
 		<?php if($heading != null):?>
 		<h1 class="cr-white"><?php echo $heading; ?></h1>
 		<div>
@@ -44,4 +44,4 @@
 	<?php endif; ?>
 </div>
 <!-- must clear the variables -->
-<?php $heading=$button_icon=$button_text=$button_url=$button_color=$image= null ?>
+<?php $heading=$button=$button_icon=$button_text=$button_url=$button_color=$image= null ?>

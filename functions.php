@@ -23,7 +23,7 @@
 		wp_enqueue_script('reframe', get_template_directory_uri().'/assets-js/plugin-reframe.js', '', '', true);
 		wp_enqueue_script('infinite-scrolling', get_template_directory_uri().'/assets-js/plugin-infinite-scrolling.js', '', false);
 		wp_enqueue_script('initialize', get_template_directory_uri().'/assets-js/initialize.js', '', false);
-		wp_enqueue_script('index', get_template_directory_uri().'/assets-js/index.js', '', true);
+		wp_enqueue_script('index', get_template_directory_uri().'/assets-js/index.js', '', false);
 	}
 	add_action('wp_enqueue_scripts', 'tindog_theme_scripts');
 

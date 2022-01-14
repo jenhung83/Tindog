@@ -3,7 +3,7 @@
 const initFields = () => {
 	const fields = document.querySelectorAll('.field');
 
-	fields.forEach(item => {
+	fields.forEach((item) => {
 		let input = item.querySelector(`input[type="text"],
 			input[type="email"], 
 			input[type="tel"],
@@ -28,8 +28,8 @@ const initFields = () => {
 const initAccordion = () => {
 	const accordion = document.querySelectorAll('.comp-accordion');
 
-	accordion.forEach(el => {
-		el.querySelector('.accordion-label').addEventListener('click', e => {
+	accordion.forEach((el) => {
+		el.querySelector('.accordion-label').addEventListener('click', (e) => {
 			// activate current accordion
 			slide('toggle', el.querySelector('.accordion-content'));
 
@@ -37,7 +37,7 @@ const initAccordion = () => {
 				? el.classList.add('active')
 				: el.classList.remove('active');
 
-			accordion.forEach(el2 => {
+			accordion.forEach((el2) => {
 				if (el2 != el) {
 					// inactive all other accordions
 					slide('up', el2.querySelector('.accordion-content'));
@@ -51,7 +51,7 @@ const initAccordion = () => {
 // global elements and pages
 
 const initPageTransition = () => {
-	document.querySelectorAll('a[href]').forEach(item => {
+	document.querySelectorAll('a[href]').forEach((item) => {
 		// if href points to anchor, or points to anchor that exists on page
 		if (
 			item.href.startsWith('#') ||
@@ -70,8 +70,8 @@ const initPageTransition = () => {
 		}
 	});
 
-	document.querySelectorAll('[data-page-transition]').forEach(item => {
-		item.addEventListener('click', e => {
+	document.querySelectorAll('[data-page-transition]').forEach((item) => {
+		item.addEventListener('click', (e) => {
 			let target = e.target.hasAttribute('data-page-transition')
 				? e.target
 				: e.target.closest('[data-page-transition]');
@@ -115,9 +115,9 @@ const initPageTransition = () => {
 };
 
 const initPageAnimation = () => {
-	document.querySelectorAll('[data-animate]').forEach(item => {
+	document.querySelectorAll('[data-animate]').forEach((item) => {
 		let observer = new IntersectionObserver(
-			el => {
+			(el) => {
 				if (
 					el[0].isIntersecting === true &&
 					!el[0].target.classList.contains('is-animated')
@@ -153,6 +153,46 @@ const initBlogIndex = () => {
 	});
 };
 
+///////這段扣放在 https://github.com/View-Source-Dev/starter-elements/tree/main/marquee
+/*
+	Description: Infinite looping marquee element
+	Options:
+	1. data-marquee-speed: speed of marquee, defaults to 1.5
+		• you can overwrite the default animation speed in a few ways:
+			1. assigning data-speed via a CMS setting
+			2. assigning data-speed by a function of blocks uploaded
+				Liquid example: assign speed = 20 | times: section.blocks.size
+	make it into a component easily with a setup like:
+	render 'comp-marquee',
+	speed: speed,
+	classes: 'section-name bg-green',
+	content: content
+*/
+const initMarquee = () => {
+	const marquees = document.querySelectorAll('.marquee');
+
+	marquees.forEach((marquee) => {
+		let maruqeeBlocks = marquee.querySelectorAll('.marquee-block');
+		let maruqeeBlockWidth = maruqeeBlocks[0].clientWidth;
+		// block content must be greater the window's innerWidth
+		let factor = Math.ceil(innerWidth / maruqeeBlockWidth);
+		let marqueeHtml = maruqeeBlocks[0].innerHTML;
+
+		maruqeeBlocks.forEach((block) => {
+			// override default speed if specified?
+			if (marquee.hasAttribute('data-speed')) {
+				block.style.animationDuration = marquee.dataset.speed + 's';
+			}
+
+			// should we replicate content to fill the window's innerWidth?
+			for (i = 0; i < factor; i++) {
+				// if so, repeat block content
+				block.innerHTML += marqueeHtml;
+			}
+		});
+	});
+};
+
 // initiate site
 window.addEventListener('DOMContentLoaded', () => {
 	// execute global and component functions
@@ -160,7 +200,7 @@ window.addEventListener('DOMContentLoaded', () => {
 	initPageAnimation();
 	initFields();
 	initAccordion();
-
+	initMarquee();
 	// execute page specific functions
 	switch (root.id) {
 		case 'frontpage':
@@ -176,7 +216,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 	// make visible .avoid-style-flash elements
 	setTimeout(() => {
-		document.querySelectorAll('.avoid-style-flash').forEach(el => {
+		document.querySelectorAll('.avoid-style-flash').forEach((el) => {
 			el.style.visibility = 'visible';
 		});
 	}, 400);
