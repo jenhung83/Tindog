@@ -14,7 +14,7 @@
 	?>
 
 </section>
-<session class="frontpage-feature bg-white f-h">
+<section class="frontpage-feature bg-white f-h">
 	<?php 
 	$feature = get_field('feature_group');
 	// var_dump($feature);
@@ -29,8 +29,8 @@
 	endif;
 	echo '</div>';
 	?>
-</session>
-<session class="frontpage-testimonial bg-sec f-v cr-white">
+</section>
+<section class="frontpage-testimonial bg-sec f-v cr-white">
 	<div class="user-carousel" data-flickity='{ 
 		"cellAlign": "center", 
 		"contain": true, 
@@ -73,9 +73,9 @@
 		?>
 
 	</div>
-</session>
+</section>
 
-<session class="frontpage-press">
+<section class="frontpage-press">
 
   <div class="marquee bg-sec" data-speed="10">
     <div class="marquee-inner">
@@ -94,16 +94,16 @@
     </div>
 
   </div>
-</session>
+</section>
 <!-- 
-	上面寫完ㄌㄜ 剩下pricing session and card component
+	上面寫完ㄌㄜ 剩下pricing section and card component
 	WIP 2022 01 14 --><!-- WIP 2022 01 14 --><!-- WIP 2022 01 14 --><!-- WIP 2022 01 14 --><!-- WIP 2022 01 14 --><!-- WIP 2022 01 14 --><!-- WIP 2022 01 14 --><!-- WIP 2022 01 14 -->
-<session class="frontpage-pricing">
+<section class="frontpage-pricing">
 	<h1><?php // 不能這樣寫 還是用isset 不然網頁會壞掉 echo get_field('pricing_title') ? get_field('pricing_title') : '';?></h1>
   <?php 
     
     // include( locate_template( 'inc/components/comp-pricing-card.php', false, false ));?>
-</session>
+</section>
 <!-- WIP 2022 01 14 --><!-- WIP 2022 01 14 --><!-- WIP 2022 01 14 --><!-- WIP 2022 01 14 --><!-- WIP 2022 01 14 --><!-- WIP 2022 01 14 --><!-- WIP 2022 01 14 --><!-- WIP 2022 01 14
 
 下面寫完了～～
@@ -111,13 +111,13 @@
 
 
 
-<session class="frontpage-download f-h bg-main">
+<section class="frontpage-download f-h bg-main">
   <?php 
   $heading = get_field('download_heading');
   $button = get_field('download_options');
     include( locate_template( 'inc/components/comp-image-heading-btn.php', false, false ));
   ?>
-</session>
+</section>
 
 
 

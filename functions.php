@@ -9,6 +9,7 @@
 	function tindog_theme_styles() {
 		wp_enqueue_style('flickity', get_template_directory_uri().'/assets-css/flickity.css');	
 		wp_enqueue_style('styles', get_template_directory_uri().'/assets-css/css/styles.min.css',array(),time());
+		//				,array(),time() 一定要加 不然沒效 不知為何...
 		// wp_enqueue_style('main',get_template_directory_uri().'/assets-css/css/styles.min.css',array(),time()); //從kombrewcha複製來的	
 	}
 	add_action('wp_enqueue_scripts', 'tindog_theme_styles');
